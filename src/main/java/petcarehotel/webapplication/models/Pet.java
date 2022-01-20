@@ -8,7 +8,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "mileniche")
 public class Pet {
+
     public Pet() {
+    }
+
+    public Pet(PetType type, String name,User owner) {
+        this.owner = owner;
+        this.type = type;
+        this.name = name;
     }
 
     @Id
@@ -16,6 +23,9 @@ public class Pet {
     private Long id;
     @ManyToOne
     private User owner;
+    @ManyToOne
+    private User keeper;
     @Enumerated(EnumType.STRING)
     private PetType type;
+    private String name;
 }

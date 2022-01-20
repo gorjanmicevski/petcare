@@ -1,6 +1,7 @@
 package petcarehotel.webapplication.service.impl;
 
 import org.springframework.stereotype.Service;
+import petcarehotel.webapplication.models.Pet;
 import petcarehotel.webapplication.repository.PetRepository;
 import petcarehotel.webapplication.service.PetService;
 
@@ -10,5 +11,10 @@ public class PetServiceImpl implements PetService {
 
     public PetServiceImpl(PetRepository petRepository) {
         this.petRepository = petRepository;
+    }
+
+    @Override
+    public void addPet(Pet pet) {
+        this.petRepository.save(pet);
     }
 }

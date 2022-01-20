@@ -23,4 +23,14 @@ public class HomeController {
         model.addAttribute("bodyContent","homepage");
         return "master-template";
     }
+    @GetMapping("/gallery")
+    public String getGalleryPage(Model model){
+        model.addAttribute("bodyContent","gallery");
+        return "master-template";
+    }
+    @GetMapping("/reviews")
+    public String getReviews(Model model){
+        model.addAttribute("bodyContent","reviews");
+        return "master-template";
+    }
 }
