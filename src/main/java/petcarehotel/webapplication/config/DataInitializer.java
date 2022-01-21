@@ -3,7 +3,7 @@ package petcarehotel.webapplication.config;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import petcarehotel.webapplication.models.Pet;
-import petcarehotel.webapplication.models.PetType;
+import petcarehotel.webapplication.models.enumerations.PetType;
 import petcarehotel.webapplication.models.User;
 import petcarehotel.webapplication.service.PetService;
 import petcarehotel.webapplication.service.UserService;

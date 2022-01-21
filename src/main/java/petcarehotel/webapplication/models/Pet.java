@@ -1,6 +1,7 @@
 package petcarehotel.webapplication.models;
 
 import lombok.Data;
+import petcarehotel.webapplication.models.enumerations.PetType;
 
 import javax.persistence.*;
 
@@ -12,7 +13,7 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(PetType type, String name,User owner) {
+    public Pet(PetType type, String name, User owner) {
         this.owner = owner;
         this.type = type;
         this.name = name;

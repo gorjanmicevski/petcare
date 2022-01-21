@@ -3,6 +3,7 @@ package petcarehotel.webapplication.models;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import petcarehotel.webapplication.models.enumerations.Role;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -23,7 +24,7 @@ public class User implements UserDetails {
         this.firstName = firstName;
         this.lastName = lastName;
         this.number = number;
-        this.role=Role.ROLE_USER;
+        this.role= Role.ROLE_USER;
     }
 
     @Id
@@ -48,7 +49,7 @@ public class User implements UserDetails {
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked = true;
     private boolean isCredentialsNonExpired = true;
-    private boolean isEnabled = true;
+    private boolean isEnabled = false;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
