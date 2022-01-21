@@ -1,4 +1,4 @@
-package petcarehotel.webapplication.models;
+package petcarehotel.webapplication.models.enumerations;
 
 import org.springframework.security.core.GrantedAuthority;
 
