@@ -31,6 +31,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         }
 
         UserDetails userDetails = this.userService.loadUserByUsername(username);
+
         if (!passwordEncoder.matches(password, userDetails.getPassword())) {
             throw new BadCredentialsException("Password is incorrect!");
         }
