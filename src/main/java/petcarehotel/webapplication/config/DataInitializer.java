@@ -1,5 +1,6 @@
 package petcarehotel.webapplication.config;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import petcarehotel.webapplication.models.Pet;
 import petcarehotel.webapplication.models.PetType;
@@ -11,11 +12,12 @@ import javax.annotation.PostConstruct;
 
 @Component
 public class DataInitializer {
-
+    private final PasswordEncoder passwordEncoder;
     private final PetService petService;
     private final UserService userService;
 
-    public DataInitializer(PetService petService, UserService service) {
+    public DataInitializer(PasswordEncoder passwordEncoder, PetService petService, UserService service) {
+        this.passwordEncoder = passwordEncoder;
         this.petService = petService;
         this.userService = service;
     }
@@ -28,9 +30,9 @@ public class DataInitializer {
     }
     @PostConstruct
     public void initData() {
-        User user1=new User("username1","pass1","email1","name1","last1","num1");
-        User user2=new User("username2","pass2","email2","name2","last2","num2");
-        User user3=new User("username3","pass3","email3","name3","last3","num3");
+        User user1=new User("username1",passwordEncoder.encode("pass1"),"email1","name1","last1","num1");
+        User user2=new User("username2",passwordEncoder.encode("pass2"),"email2","name2","last2","num2");
+        User user3=new User("username3",passwordEncoder.encode("pass3"),"email3","name3","last3","num3");
         this.userService.addUser(user1);
         this.userService.addUser(user2);
         this.userService.addUser(user3);
