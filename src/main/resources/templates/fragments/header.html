@@ -1,31 +1,266 @@
 
+<style>
+    navbar .dropdown-toggle::after {
+        display: none;
+    }
+    @media (max-width: 768px) {
+        .navbar .dropdown-menu.form-wrapper {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+        }
+    }
+    .navbar .form-wrapper .hint-text {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 13px;
+        float:right;
+    }
+    /*
+    .navbar .form-wrapper .social-btn .btn, .navbar .form-wrapper .social-btn .btn:hover {
+        color: #fff;
+        margin: 0;
+        padding: 0 !important;
+        font-size: 13px;
+        border: none;
+        transition: all 0.4s;
+        text-align: center;
+        line-height: 34px;
+        width: 47%;
+        text-decoration: none;
+    }
+    .navbar .social-btn .btn-primary {
+        background: #507cc0;
+    }
+    .navbar .social-btn .btn-primary:hover {
+        background: #4676bd;
+    }
+    .navbar .social-btn .btn-info {
+        background: #64ccf1;
+    }
+    .navbar .social-btn .btn-info:hover {
+        background: #4ec7ef;
+    }
+    .navbar .social-btn .btn i {
+        margin-right: 5px;
+        font-size: 16px;
+        position: relative;
+        top: 2px;
+    }*/
+    /*
+    .or-seperator {
+        margin-top: 32px;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+    }
+    .or-seperator b {
+        color: #666;
+        padding: 0 8px;
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
+        text-align: center;
+        line-height: 26px;
+        background: #fff;
+        display: inline-block;
+        border: 1px solid #e0e0e0;
+        border-radius: 50%;
+        position: relative;
+        top: -15px;
+        z-index: 1;
+    }
+    */
+
+    /*
+    =============================
+    */
+
+    .navbar .dropdown-menu {
+        border-radius: 1px;
+        border-color: #e5e5e5;
+        box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    }
+    .navbar .nav .dropdown-menu li {
+        color: #999;
+        font-weight: normal;
+    }
+    .navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
+        padding: 8px 20px;
+        line-height: normal;
+    }
+    .navbar .navbar-form {
+        border: none;
+    }
+    .navbar .dropdown-menu.form-wrapper {
+        width: 280px;
+        padding: 20px;
+        left: auto;
+        right: 0;
+        font-size: 14px;
+    }
+    .navbar .dropdown-menu.form-wrapper a {
+        color: #33cabb;
+        /*padding: 0 !important;*/
+        padding-top:50px;
+    }
+    .navbar .dropdown-menu.form-wrapper a:hover{
+        text-decoration: underline;
+    }
+    .navbar .form-wrapper .hint-text {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 13px;
+    }
+    /*
+    ======================
+    */
+    @media (min-width: 1200px){
+        .form-inline .input-group {
+            width: 300px;
+            margin-left: 30px;
+        }
+    }
+    @media (max-width: 768px) {
+        .navbar .dropdown-menu.form-wrapper {
+            width: 100%;
+            padding: 10px 15px;
+            background: transparent;
+            border: none;
+            margin-left:500px
+            background: red;
+        }
+
+        .navbar .form-inline {
+            display: block;
+        }
+
+        .navbar .input-group {
+            width: 100%;
+        }
+
+        .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
+            display: block;
+        }
+    }
+    #specijalnoZaLogin{
+        margin-top:118px;
+    }
+
+
+    .navbar .nav li {
+        position: relative;
+    }
+    .navbar .nav li a {
+        color: #888;
+    }
+    .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
+        color: #fff;
+        background: #33cabb;
+        padding-top: 8px;
+        padding-bottom: 6px;
+        vertical-align: middle;
+        border: none;
+    }
+    .navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {
+        color: #fff;
+        outline: none;
+        background: #31bfb1;
+    }
+    .navbar .navbar-right li:first-child a {
+        padding-right: 30px;
+    }
+    .navbar ul li i {
+        font-size: 18px;
+    }
+    .navbar .dropdown-menu i {
+        font-size: 16px;
+        min-width: 22px;
+    }
+    .navbar ul.nav li.active a, .navbar ul.nav li.open > a {
+        background: transparent !important;
+    }
+    .navbar ul.nav li.open > a.get-started-btn {
+        color: #fff;
+        background: #31bfb1 !important;
+    }
+    .navbar .dropdown-menu {
+        border-radius: 1px;
+        border-color: #e5e5e5;
+        box-shadow: 0 2px 8px rgba(124, 102, 102, 0.05);
+        box-shadow:white;
+    }
+    .navbar .nav .dropdown-menu li {
+        color: #999;
+        font-weight: normal;
+    }
+    .navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
+        padding: 8px 20px;
+        line-height: normal;
+    }
+    .navbar .dropdown-menu.form-wrapper a {
+        color: #33cabb;
+        padding: 0 !important;
+    }
+    .navbar .dropdown-menu.form-wrapper a:hover {
+        text-decoration: underline;
+    }
+
+</style>
 <header>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <div class="container">
-            <a href="https://www.instagram.com/pet_care__hotel/" class="navbar-brand">Pet Care Hotel</a>
-            <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#menu"
-            >
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
+        <a class="navbar-brand" href="https://www.instagram.com/pet_care__hotel/">Pet Care Hotel</a>
+        <button
+         class="navbar-toggler navbar-toggler-right"
+         type="button"
+         data-toggle="collapse"
+         data-target="#menu"
+         aria-expanded="true">
             <span class="navbar-toggler-icon"></span>
-            </button>
-            <div id="menu" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a href="/" class="nav-link">Home</a>
+        </button>
+        <div id="menu" class="navbar-collapse collapse hide">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/gallery" class="nav-link">Gallery</a>
+                    <a class="nav-link" href="/gallery">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/reviews" class="nav-link">Reviews</a>
+                    <a class="nav-link" href="/reviews">Reviews</a>
                 </li>
             </ul>
-            </div>
+
+            <ul class="nav navbar-nav ml-auto">
+
+                <li class="nav-item">
+
+                    <a data-toggle="dropdown" id="specijalnoZaLogin" class="nav-item" href="#" ><span style="">Login</span></a>
+                    <ul class="dropdown-menu form-wrapper float-right">
+                        <li>
+                            <form th:action="@{'/login/'}" th:method="post" >
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Username" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password" required="required">
+                                </div>
+                                <input type="submit" class="btn btn-primary btn-block" value="Login">
+                                <div class="form-footer">
+                                    <a href="#">Forgot Your password?</a>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register/"><span class="fas fa-user"></span><button class="btn btn-secondary btn-block"> Register</button></a>
+                </li>
+                </li>
+            </ul>
         </div>
     </nav>
 </header>
