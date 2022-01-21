@@ -1,14 +1,18 @@
 package petcarehotel.webapplication.models;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "korisnik")
-public class User {
+public class User implements UserDetails {
     public User() {
     }
 
@@ -19,6 +23,7 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.number = number;
+        this.role=Role.ROLE_USER;
     }
 
     @Id
@@ -31,11 +36,42 @@ public class User {
     private String firstName;
     private String lastName;
     private String number;
-
-    @OneToMany(mappedBy = "owner")
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
+    @OneToMany(mappedBy = "owner",fetch = FetchType.EAGER)
     private List<Pet> pets;
 
     public void addPet(Pet pet){
         pets.add(pet);
     }
+
+    private boolean isAccountNonExpired = true;
+    private boolean isAccountNonLocked = true;
+    private boolean isCredentialsNonExpired = true;
+    private boolean isEnabled = true;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(role);
+    }
+    @Override
+    public boolean isAccountNonExpired() {
+        return isAccountNonExpired;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return isAccountNonLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return isCredentialsNonExpired;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
 }

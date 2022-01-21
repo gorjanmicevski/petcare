@@ -6,5 +6,5 @@ import petcarehotel.webapplication.models.User;
 
 public interface UserService extends UserDetailsService {
     void addUser(User user);
-    void register(String username, String password, String repeatPassword, String name, String surname, Role role);
+    void register(String username, String password, String repeatPassword,String email, String name, String surname, Role role);
 }
