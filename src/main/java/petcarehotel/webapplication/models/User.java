@@ -42,6 +42,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "owner",fetch = FetchType.EAGER)
     private List<Pet> pets;
 
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews;
+
     public void addPet(Pet pet){
         pets.add(pet);
     }
