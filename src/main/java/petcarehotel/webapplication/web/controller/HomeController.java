@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
-@RequestMapping({"/petcare","/"})
 public class HomeController {
     private final UserService userService;
     private final PetService petService;
@@ -104,5 +103,10 @@ public class HomeController {
     @GetMapping("/registration/confirm")
     public String confirm(@RequestParam("token") String token, HttpServletResponse resp) throws IOException {
         return registrationService.confirmToken(token);
+    }
+    @GetMapping("/login")
+    public String getLoginPage(Model model){
+        model.addAttribute("bodyContent","login");
+        return "master-template";
     }
 }
