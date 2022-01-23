@@ -6,9 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import petcarehotel.webapplication.models.enumerations.Role;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Data
 @Entity
@@ -25,6 +23,7 @@ public class User implements UserDetails {
         this.lastName = lastName;
         this.number = number;
         this.role= Role.ROLE_USER;
+
     }
 
     @Id
@@ -41,9 +40,9 @@ public class User implements UserDetails {
     private Role role;
     @OneToMany(mappedBy = "owner",fetch = FetchType.EAGER)
     private List<Pet> pets;
-
-    @OneToMany(mappedBy = "user")
-    private List<Review> reviews;
+//
+//    @OneToMany(mappedBy = "user")
+//    private List<Review> reviews;
 
     public void addPet(Pet pet){
         pets.add(pet);

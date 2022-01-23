@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
-@RequestMapping({"/petcare","/"})
 public class HomeController {
     private final UserService userService;
     private final PetService petService;

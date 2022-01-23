@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
     public String register(User appUser) {
         //TODO implement
 
-        String encodedPass = passwordEncoder.encode(appUser.getPassword());
-        appUser.setPassword(encodedPass);
+        //String encodedPass = passwordEncoder.encode(appUser.getPassword());
+        //appUser.setPassword(encodedPass);
         userRepository.save(appUser);
         String token = UUID.randomUUID().toString();
         ConfirmationToken confirmationToken = new ConfirmationToken(

@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import petcarehotel.webapplication.models.enumerations.Role;
 
 @Configuration
 @EnableWebSecurity
@@ -31,8 +32,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/","/register","/registration","/registration/confirm").permitAll()
-                .antMatchers("/gallery").access("hasRole('USER') or hasRole('ADMIN')")
-                .antMatchers("/reviews").hasRole("ADMIN")
+                .antMatchers("/gallery","/reviews").hasAuthority(Role.ROLE_USER.name())
+                //.antMatchers("/reviews").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
