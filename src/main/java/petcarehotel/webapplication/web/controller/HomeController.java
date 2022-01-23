@@ -104,4 +104,9 @@ public class HomeController {
     public String confirm(@RequestParam("token") String token, HttpServletResponse resp) throws IOException {
         return registrationService.confirmToken(token);
     }
+    @GetMapping("/login")
+    public String getLoginPage(Model model){
+        model.addAttribute("bodyContent","login");
+        return "master-template";
+    }
 }
