@@ -1,5 +1,4 @@
-
-<style>
+<style >
     .modal-backdrop {
         z-index: -1;
     }
@@ -15,7 +14,7 @@
         padding-right:inherit !important;
     }
 </style>
-<header>
+<header xmlns:th="http://www.w3.org/1999/xhtml">
 
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
@@ -36,17 +35,17 @@
         <div id="menu" class="navbar-collapse collapse hide">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/" style="color:black;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/gallery">Gallery</a>
+                    <a class="nav-link" href="/gallery" style="color:black;">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/reviews">Reviews</a>
+                    <a class="nav-link" href="/reviews" style="color:black;">Reviews</a>
                 </li>
             </ul>
 
-            <ul class="nav navbar-nav ml-auto">
+            <ul class="nav navbar-nav ml-auto" th:if="${currentUser == null}">
                 <li class="nav-item">
                     <a class="nav-link" href="/login"><button class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><span class="fa fa-user" style="margin-right: 10px;"></span>Login</button></a>
                     </li>

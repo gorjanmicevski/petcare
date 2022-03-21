@@ -3,6 +3,8 @@ package petcarehotel.webapplication.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,6 +17,18 @@ public class Review {
     private String text;
 
     private Double rating;
+
+    public List<Integer> getRating() {
+        List<Integer> ret=new ArrayList<>();
+        for (int i=1;i<=5;i++){
+            if(rating>i)
+                ret.add(i);
+            else
+                ret.add(0);
+
+        }
+        return ret;
+    }
 
     @ManyToOne
     private User user;

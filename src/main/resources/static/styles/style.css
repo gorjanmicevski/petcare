@@ -25,3 +25,14 @@
     width: 200px;
     height: 200px;
 }
+.testing{
+    background-color:red;
+    width: 200px;
+    height: 200px;
+}
+.review{
+    color: blue;
+}
+#test{
+    color: yellow;
+}

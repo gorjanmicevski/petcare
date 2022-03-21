@@ -28,11 +28,10 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review create(String text, User user) {
-        Review r = new Review();
-        r.setText(text);
-        r.setUser(user);
-        return r;
+    public Review create(String text, User user,Double rating) {
+        Review review=new Review(text,user,rating);
+        reviewRepository.save(review);
+        return review;
     }
 
     @Override
