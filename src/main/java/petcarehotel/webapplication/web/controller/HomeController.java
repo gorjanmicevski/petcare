@@ -1,5 +1,8 @@
 package petcarehotel.webapplication.web.controller;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,7 @@ import petcarehotel.webapplication.service.UserService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 @Controller
 public class HomeController {
@@ -30,18 +34,34 @@ public class HomeController {
 
     @GetMapping
     public String getHome(Model model){
+        userInSession(model);
         model.addAttribute("bodyContent","homepage");
+
         return "master-template";
     }
+
     @GetMapping("/gallery")
     public String getGalleryPage(Model model){
+        userInSession(model);
         model.addAttribute("bodyContent","gallery");
         return "master-template";
     }
+
     @GetMapping("/reviews")
     public String getReviews(Model model){
+        userInSession(model);
         model.addAttribute("bodyContent","reviews");
+        model.addAttribute("reviews",reviewService.findAll());
         return "master-template";
+    }
+    private void userInSession(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication!=null) {
+            if (authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).get(0).equals("ROLE_ANONYMOUS"))
+                model.addAttribute("currentUser", null);
+            else
+                model.addAttribute("currentUser", userService.findByUsername(authentication.getName()));
+        }
     }
 
     @GetMapping("/reviews/add")
@@ -64,7 +84,7 @@ public class HomeController {
     public String postReview(@RequestParam(required = false) String text,
                              @RequestParam(required = false) Long userId){
         User u = userService.findById(userId);
-        reviewService.create(text, u);
+        reviewService.create(text, u,5.0);
         return "redirect:/reviews";
     }
 
