@@ -1,8 +1,8 @@
 package petcarehotel.webapplication.models.exceptions;
 
 public class PasswordsDoNotMatchException extends RuntimeException {
-    public PasswordsDoNotMatchException() {
-        super("Passwords do not match exception.");
-    }
+  public PasswordsDoNotMatchException() {
+    super("Passwords do not match exception.");
+  }
 
 }

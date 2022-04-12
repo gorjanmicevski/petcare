@@ -1,6 +1,10 @@
 package petcarehotel.webapplication.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import petcarehotel.webapplication.models.enumerations.Role;
@@ -11,9 +15,11 @@ import java.util.*;
 @Data
 @Entity
 @Table(name = "korisnik")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class User implements UserDetails {
-    public User() {
-    }
 
     public User(String username, String password, String email, String firstName, String lastName, String number) {
         this.username = username;
@@ -40,9 +46,6 @@ public class User implements UserDetails {
     private Role role;
     @OneToMany(mappedBy = "owner",fetch = FetchType.EAGER)
     private List<Pet> pets;
-//
-//    @OneToMany(mappedBy = "user")
-//    private List<Review> reviews;
 
     public void addPet(Pet pet){
         pets.add(pet);
@@ -75,9 +78,5 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return isEnabled;
-    }
-
-    public String getName() {
-        return firstName+" "+lastName;
     }
 }
