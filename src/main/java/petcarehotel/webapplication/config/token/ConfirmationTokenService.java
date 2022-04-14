@@ -5,6 +5,9 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service for the confirmation token.
+ */
 @Service
 @RequiredArgsConstructor
 public class ConfirmationTokenService {

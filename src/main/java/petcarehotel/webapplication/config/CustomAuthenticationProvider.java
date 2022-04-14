@@ -11,6 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import petcarehotel.webapplication.service.UserService;
 
+/**
+ * Custom authentication provider implementing the AuthenticationProvider.
+ */
 @Component
 @RequiredArgsConstructor
 public class CustomAuthenticationProvider implements AuthenticationProvider {
@@ -37,7 +40,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
   }
 
   @Override
-  public boolean supports(Class<?> aClass) {
-    return aClass.equals(UsernamePasswordAuthenticationToken.class);
+  public boolean supports(Class<?> classType) {
+    return classType.equals(UsernamePasswordAuthenticationToken.class);
   }
 }

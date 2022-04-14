@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.PasswordEncoder;
 import petcarehotel.webapplication.models.enumerations.Role;
 
+/**
+ * Security configuration.
+ */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -23,6 +26,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     web.ignoring().antMatchers("/h2/**");
   }
 
+  /**
+   * Configuration for the user.
+   *
+   * @param http HttpSecurity
+   * @throws Exception exception
+   */
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable()

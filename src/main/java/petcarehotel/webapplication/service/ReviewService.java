@@ -1,10 +1,12 @@
 package petcarehotel.webapplication.service;
 
+import java.util.List;
 import petcarehotel.webapplication.models.Review;
 import petcarehotel.webapplication.models.User;
 
-import java.util.List;
-
+/**
+ * Service for the Review entity.
+ */
 public interface ReviewService {
   Review findById(Long id);
 

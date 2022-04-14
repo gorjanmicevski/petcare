@@ -6,6 +6,9 @@ import petcarehotel.webapplication.models.Pet;
 import petcarehotel.webapplication.repository.PetRepository;
 import petcarehotel.webapplication.service.PetService;
 
+/**
+ * Service implementation for the Pet entity.
+ */
 @Service
 @RequiredArgsConstructor
 public class PetServiceImpl implements PetService {

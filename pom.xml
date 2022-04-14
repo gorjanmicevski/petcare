@@ -81,6 +81,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -111,7 +112,27 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>${flyway.maven.plugin}</version>
-
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>migrate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>jdbc:postgresql://localhost:5432/petcare</url>
+                    <user>postgres</user>
+                    <password>root</password>
+                    <baselineOnMigrate>true</baselineOnMigrate>
+                    <schemas>public</schemas>
+                    <locations>
+                        <location>
+                            filesystem:src/main/resources/db/migration
+                        </location>
+                    </locations>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>

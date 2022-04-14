@@ -1,9 +1,11 @@
 package petcarehotel.webapplication.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
-import petcarehotel.webapplication.models.enumerations.Role;
 import petcarehotel.webapplication.models.User;
 
+/**
+ * Service for the User entity.
+ */
 public interface UserService extends UserDetailsService {
   void addUser(User user);
 

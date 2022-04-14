@@ -9,12 +9,20 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementation of the EmailService.
+ */
 @Service
 @RequiredArgsConstructor
 public class EmailServiceImpl implements EmailService {
 
   private final JavaMailSender mailSender;
 
+  /**
+   * Method to send email for verification.
+   *
+   * @param mail Mail
+   */
   public void sendEmail(Mail mail) {
     MimeMessage mimeMessage = mailSender.createMimeMessage();
 

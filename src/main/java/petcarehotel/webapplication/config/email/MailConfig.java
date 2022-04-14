@@ -8,11 +8,19 @@ import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
+/**
+ * Configuration class MailConfig.
+ */
 @Configuration
 public class MailConfig {
   @Autowired
   private Environment env;
 
+  /**
+   * Setting up properties for JavaMailSender.
+   *
+   * @return JavaMailSender
+   */
   @Bean
   public JavaMailSender getMailSender() {
     JavaMailSenderImpl mailSender = new JavaMailSenderImpl();

@@ -22,6 +22,9 @@ import petcarehotel.webapplication.service.PetService;
 import petcarehotel.webapplication.service.ReviewService;
 import petcarehotel.webapplication.service.UserService;
 
+/**
+ * Home controller.
+ */
 @Controller
 @RequiredArgsConstructor
 public class HomeController {
@@ -30,6 +33,12 @@ public class HomeController {
   private final ReviewService reviewService;
   private final RegistrationService registrationService;
 
+  /**
+   * Method to return getHome.
+   *
+   * @param model Model
+   * @return String
+   */
   @GetMapping
   public String getHome(Model model) {
     userInSession(model);
@@ -38,6 +47,12 @@ public class HomeController {
     return "master-template";
   }
 
+  /**
+   * Method to return getGalleryPage.
+   *
+   * @param model Model
+   * @return String
+   */
   @GetMapping("/gallery")
   public String getGalleryPage(Model model) {
     userInSession(model);
@@ -45,6 +60,12 @@ public class HomeController {
     return "master-template";
   }
 
+  /**
+   * Method to return getReviews.
+   *
+   * @param model Model
+   * @return String
+   */
   @GetMapping("/reviews")
   public String getReviews(Model model) {
     userInSession(model);
@@ -53,6 +74,11 @@ public class HomeController {
     return "master-template";
   }
 
+  /**
+   * Method to find the userInSession.
+   *
+   * @param model Model
+   */
   private void userInSession(Model model) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     if (authentication != null) {
@@ -65,12 +91,24 @@ public class HomeController {
     }
   }
 
+  /**
+   * Method to add a review.
+   *
+   * @param model Model
+   * @return String
+   */
   @GetMapping("/reviews/add")
   public String showAdd(Model model) {
     model.addAttribute("bodyContent", "add-review");
     return "master-template";
   }
 
+  /**
+   * Method to edit a review.
+   *
+   * @param model Model
+   * @return String
+   */
   @GetMapping("/reviews/{id}/edit")
   public String showEdit(@PathVariable Long id,
                          Model model) {
@@ -80,7 +118,13 @@ public class HomeController {
     return "master-template";
   }
 
-
+  /**
+   * Method to post a review.
+   *
+   * @param text String
+   * @param userId Long
+   * @return String
+   */
   @PostMapping("/reviews")
   public String postReview(@RequestParam(required = false) String text,
                            @RequestParam(required = false) Long userId) {
@@ -89,6 +133,14 @@ public class HomeController {
     return "redirect:/reviews";
   }
 
+  /**
+   * Method to update a review.
+   *
+   * @param id Long
+   * @param text String
+   * @param userId Long
+   * @return String
+   */
   @PostMapping("/reviews/{id}")
   public String updateReview(@PathVariable Long id,
                              @RequestParam(required = false) String text,
@@ -98,18 +150,42 @@ public class HomeController {
     return "redirect:/reviews";
   }
 
+  /**
+   * Method to delete a review.
+   *
+   * @param id Long
+   * @return String
+   */
   @PostMapping("/reviews/{id}/delete")
   public String deleteReview(@PathVariable Long id) {
     reviewService.delete(id);
     return "redirect:/reviews";
   }
 
+  /**
+   * Method to get the register page.
+   *
+   * @param model Model
+   * @return String
+   */
   @GetMapping("/register")
   public String getRegisterPage(Model model) {
     model.addAttribute("bodyContent", "register");
     return "master-template";
   }
 
+  /**
+   * Method to register a user.
+   *
+   * @param username String
+   * @param email String
+   * @param password String
+   * @param repeatPassword String
+   * @param firstName String
+   * @param lastName String
+   * @param model Model
+   * @return String
+   */
   @PostMapping("/registration")
   public String registerUser(@RequestParam String username,
                              @RequestParam String email,
@@ -131,6 +207,12 @@ public class HomeController {
     return registrationService.confirmToken(token);
   }
 
+  /**
+   * Method to get the login page.
+   *
+   * @param model Model
+   * @return String
+   */
   @GetMapping("/login")
   public String getLoginPage(Model model) {
     model.addAttribute("bodyContent", "login");

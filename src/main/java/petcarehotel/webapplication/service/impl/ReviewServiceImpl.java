@@ -8,6 +8,9 @@ import petcarehotel.webapplication.models.User;
 import petcarehotel.webapplication.repository.ReviewRepository;
 import petcarehotel.webapplication.service.ReviewService;
 
+/**
+ * Service implementation for the Review entity.
+ */
 @Service
 @RequiredArgsConstructor
 public class ReviewServiceImpl implements ReviewService {

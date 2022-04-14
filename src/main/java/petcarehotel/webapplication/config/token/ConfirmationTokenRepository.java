@@ -8,6 +8,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+/**
+ * JpaRepository for the ConfirationToken.
+ */
 @Repository
 public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationToken, Integer> {
 
@@ -17,8 +20,8 @@ public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationT
 
   @Transactional
   @Modifying
-  @Query("UPDATE ConfirmationToken c " +
-      "SET c.confirmedAt = ?2 " +
-      "WHERE c.token = ?1")
+  @Query("UPDATE ConfirmationToken c "
+      + "SET c.confirmedAt = ?2 "
+      + "WHERE c.token = ?1")
   int updateConfirmedAt(String token, LocalDateTime confirmedAt);
 }

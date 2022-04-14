@@ -7,6 +7,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import petcarehotel.webapplication.models.User;
 
+/**
+ * JpaRepository for the User entity.
+ */
 public interface UserRepository extends JpaRepository<User, Long> {
   User findByUsernameEqualsOrEmailEquals(String username, String email);
 
@@ -16,8 +19,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   @Transactional
   @Modifying
-  @Query("UPDATE User a " +
-      "SET a.isEnabled = TRUE WHERE a.email = ?1")
+  @Query("UPDATE User a "
+      + "SET a.isEnabled = TRUE WHERE a.email = ?1")
   int enableUser(String email);
 
   User findUserById(Long id);

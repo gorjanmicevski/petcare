@@ -13,6 +13,9 @@ import petcarehotel.webapplication.models.User;
 import petcarehotel.webapplication.repository.UserRepository;
 import petcarehotel.webapplication.service.UserService;
 
+/**
+ * Service implementation for the User entity.
+ */
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {

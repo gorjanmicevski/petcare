@@ -13,14 +13,15 @@ import javax.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import petcarehotel.webapplication.models.User;
 
+/**
+ * Entity for the confirmation token.
+ */
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Getter
 @Setter
 public class ConfirmationToken {
@@ -54,6 +55,14 @@ public class ConfirmationToken {
   @JoinColumn(nullable = false, name = "app_user")
   private User user;
 
+  /**
+   * Constructor.
+   *
+   * @param token String
+   * @param createdAt LocalDateTime
+   * @param expiresAt LocalDateTime
+   * @param user User
+   */
   public ConfirmationToken(String token, LocalDateTime createdAt, LocalDateTime expiresAt,
                            User user) {
     this.token = token;
