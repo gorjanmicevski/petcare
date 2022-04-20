@@ -23,8 +23,6 @@
         <checkstyle.version>10.0</checkstyle.version>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <spring.bom>5.3.18</spring.bom>
-        <flyway.version>8.5.7</flyway.version>
-        <flyway.maven.plugin>8.0.0</flyway.maven.plugin>
 
     </properties>
     <dependencies>
@@ -87,11 +85,6 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-            <version>${flyway.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -106,32 +99,6 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>${flyway.maven.plugin}</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>migrate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://localhost:5432/petcare</url>
-                    <user>postgres</user>
-                    <password>root</password>
-                    <baselineOnMigrate>true</baselineOnMigrate>
-                    <schemas>public</schemas>
-                    <locations>
-                        <location>
-                            filesystem:src/main/resources/db/migration
-                        </location>
-                    </locations>
                 </configuration>
             </plugin>
             <plugin>
