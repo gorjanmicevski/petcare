@@ -70,4 +70,8 @@ public class Review {
     }
     return ret;
   }
+
+  public double getRatingDouble() {
+    return rating;
+  }
 }

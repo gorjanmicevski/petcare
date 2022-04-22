@@ -46,10 +46,8 @@ public class Pet {
   @Column(name = "PET_ID")
   private Long id;
   @ManyToOne
-  @Column(name = "OWNER_ID")
   private User owner;
   @ManyToOne
-  @Column(name = "KEEPER_ID")
   private User keeper;
   @Enumerated(EnumType.STRING)
   @Column(name = "PET_TYPE")

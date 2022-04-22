@@ -1,11 +1,11 @@
 package petcarehotel.webapplication.models.enumerations;
 
-import org.springframework.security.core.GrantedAuthority;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import org.springframework.security.core.GrantedAuthority;
+
 
 /**
  * Enumeration for the User role.
