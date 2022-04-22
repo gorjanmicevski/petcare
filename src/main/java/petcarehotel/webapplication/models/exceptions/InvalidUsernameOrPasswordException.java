@@ -1,7 +1,10 @@
 package petcarehotel.webapplication.models.exceptions;
 
-public class InvalidUsernameOrPasswordException extends RuntimeException{
-    public InvalidUsernameOrPasswordException() {
-        super("Invalid username or password exception");
-    }
+/**
+ * Custom exception for invalid username or password.
+ */
+public class InvalidUsernameOrPasswordException extends RuntimeException {
+  public InvalidUsernameOrPasswordException() {
+    super("Invalid username or password exception");
+  }
 }

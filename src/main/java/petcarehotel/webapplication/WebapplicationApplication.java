@@ -6,13 +6,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/**
+ * Class to start the application.
+ */
 @SpringBootApplication
 public class WebapplicationApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(WebapplicationApplication.class, args);
-    }
-    @Bean
-    PasswordEncoder passwordEncoder(){return new BCryptPasswordEncoder(10);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(WebapplicationApplication.class, args);
+  }
+
+  @Bean
+  PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder(10);
+  }
 }
