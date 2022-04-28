@@ -5,11 +5,13 @@ import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import petcarehotel.webapplication.models.User;
 
 /**
  * JpaRepository for the User entity.
  */
+@Repository
 public interface UserRepository extends JpaRepository<User, Long> {
   User findByUsernameEqualsOrEmailEquals(String username, String email);
 
