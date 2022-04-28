@@ -6,6 +6,8 @@ import petcarehotel.webapplication.models.Pet;
 import petcarehotel.webapplication.repository.PetRepository;
 import petcarehotel.webapplication.service.PetService;
 
+import javax.transaction.Transactional;
+
 /**
  * Service implementation for the Pet entity.
  */
@@ -14,6 +16,7 @@ import petcarehotel.webapplication.service.PetService;
 public class PetServiceImpl implements PetService {
   private final PetRepository petRepository;
 
+  @Transactional
   @Override
   public void addPet(Pet pet) {
     this.petRepository.save(pet);

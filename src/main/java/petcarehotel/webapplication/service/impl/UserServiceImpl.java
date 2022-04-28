@@ -13,6 +13,8 @@ import petcarehotel.webapplication.models.User;
 import petcarehotel.webapplication.repository.UserRepository;
 import petcarehotel.webapplication.service.UserService;
 
+import javax.transaction.Transactional;
+
 /**
  * Service implementation for the User entity.
  */
@@ -23,6 +25,7 @@ public class UserServiceImpl implements UserService {
   private final PasswordEncoder passwordEncoder;
   private final ConfirmationTokenService tokenService;
 
+  @Transactional
   @Override
   public void addUser(User user) {
     userRepository.save(user);

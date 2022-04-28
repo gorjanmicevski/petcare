@@ -14,9 +14,17 @@ import static petcarehotel.webapplication.models.enumerations.Role.getRandomRole
 @UtilityClass
 public class TestObjectGenerator {
 
-    public static Pet generatePet() {
+    public static Pet generateIntegrationPet() {
         Pet pet = new Pet();
 
+        pet.setType(getRandomPetType());
+        pet.setName(randomUUID().toString());
+
+        return pet;
+    }
+
+    public static Pet generatePet() {
+        Pet pet = new Pet();
         User owner = generateUser();
         pet.setOwner(owner);
 
@@ -41,6 +49,20 @@ public class TestObjectGenerator {
         user.setRole(getRandomRole());
 
         return user;
+    }
+
+    public static Review generateIntegrationReview() {
+        Review review = new Review();
+
+        review.setText(randomUUID().toString());
+
+        Random r = new Random();
+        int rangeMin = 1;
+        int rangeMax = 10;
+        double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+        review.setRating(randomValue);
+
+        return review;
     }
 
     public static Review generateReview() {

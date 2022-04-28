@@ -8,6 +8,8 @@ import petcarehotel.webapplication.models.User;
 import petcarehotel.webapplication.repository.ReviewRepository;
 import petcarehotel.webapplication.service.ReviewService;
 
+import javax.transaction.Transactional;
+
 /**
  * Service implementation for the Review entity.
  */
@@ -27,6 +29,7 @@ public class ReviewServiceImpl implements ReviewService {
     return reviewRepository.findAll();
   }
 
+  @Transactional
   @Override
   public Review create(String text, User user, Double rating) {
     Review review = new Review(text, user, rating);
@@ -34,6 +37,7 @@ public class ReviewServiceImpl implements ReviewService {
     return review;
   }
 
+  @Transactional
   @Override
   public Review update(Long id, String text, User user) {
     Review r = reviewRepository.findReviewById(id);
@@ -42,6 +46,7 @@ public class ReviewServiceImpl implements ReviewService {
     return r;
   }
 
+  @Transactional
   @Override
   public Review delete(Long id) {
     Review r = reviewRepository.findReviewById(id);

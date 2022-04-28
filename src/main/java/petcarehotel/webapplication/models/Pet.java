@@ -1,14 +1,7 @@
 package petcarehotel.webapplication.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -45,9 +38,9 @@ public class Pet {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "PET_ID")
   private Long id;
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.MERGE)
   private User owner;
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.MERGE)
   private User keeper;
   @Enumerated(EnumType.STRING)
   @Column(name = "PET_TYPE")
