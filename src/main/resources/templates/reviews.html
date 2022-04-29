@@ -26,7 +26,7 @@
         <div  class="col-10 my-1 py-3" th:each="review : ${reviews}">
             <div class="review">
                 <div class="user-rating">
-                    <h3 th:text="${review.getUser().getName()}"></h3>
+                    <h3 th:text="${review.getUser().getFirstName()}"></h3>
                     <span>
                     <span th:each="i : ${review.getRating()}" th:class="${i!=0 ? 'fa fa-star checked' : 'fa fa-star'} "></span>
                     </span>
