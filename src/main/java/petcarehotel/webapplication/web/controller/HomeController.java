@@ -206,6 +206,11 @@ public class HomeController {
       throws IOException {
     return registrationService.confirmToken(token);
   }
+  @GetMapping("/find")
+  public String find(Model mode){
+    mode.addAttribute("bodyContent","find");
+    return "master-template";
+  }
 
   /**
    * Method to get the login page.
@@ -218,4 +223,5 @@ public class HomeController {
     model.addAttribute("bodyContent", "login");
     return "master-template";
   }
+
 }
