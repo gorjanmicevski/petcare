@@ -26,7 +26,7 @@ public class Review {
   @Column(name = "REVIEW_ID")
   private Long id;
 
-  @Column(name = "TEXT")
+  @Column(name = "TEXT",length=10485760)
   private String text;
 
   @Column(name = "RATING")
@@ -56,7 +56,7 @@ public class Review {
   public List<Integer> getRating() {
     List<Integer> ret = new ArrayList<>();
     for (int i = 1; i <= 5; i++) {
-      if (rating > i) {
+      if (rating >= i) {
         ret.add(i);
       } else {
         ret.add(0);

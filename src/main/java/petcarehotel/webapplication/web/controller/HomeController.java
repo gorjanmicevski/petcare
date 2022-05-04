@@ -79,16 +79,19 @@ public class HomeController {
    *
    * @param model Model
    */
-  private void userInSession(Model model) {
+  private User userInSession(Model model) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    User userInSession=null;
     if (authentication != null) {
       if (authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority)
           .collect(Collectors.toList()).get(0).equals("ROLE_ANONYMOUS")) {
         model.addAttribute("currentUser", null);
       } else {
-        model.addAttribute("currentUser", userService.findByUsername(authentication.getName()));
+        userInSession=userService.findByUsername(authentication.getName());
+        model.addAttribute("currentUser", userInSession);
       }
     }
+    return userInSession;
   }
 
   /**
@@ -99,6 +102,7 @@ public class HomeController {
    */
   @GetMapping("/reviews/add")
   public String showAdd(Model model) {
+    userInSession(model);
     model.addAttribute("bodyContent", "add-review");
     return "master-template";
   }
@@ -126,10 +130,10 @@ public class HomeController {
    * @return String
    */
   @PostMapping("/reviews")
-  public String postReview(@RequestParam(required = false) String text,
-                           @RequestParam(required = false) Long userId) {
-    User u = userService.findById(userId);
-    reviewService.create(text, u, 5.0);
+  public String postReview(@RequestParam(required = false) String description,@RequestParam(required = false) Integer rating,
+                           Model model) {
+    User user = userInSession(model);
+    reviewService.create(description, user, Double.valueOf(rating));
     return "redirect:/reviews";
   }
 
@@ -207,8 +211,9 @@ public class HomeController {
     return registrationService.confirmToken(token);
   }
   @GetMapping("/find")
-  public String find(Model mode){
-    mode.addAttribute("bodyContent","find");
+  public String find(Model model){
+    userInSession(model);
+    model.addAttribute("bodyContent","find");
     return "master-template";
   }
 
